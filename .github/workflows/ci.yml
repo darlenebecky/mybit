@@ -21,7 +21,7 @@ jobs:
         id: daily_check
         run: |
           # 使用年份+周数+天数作为随机种子，确保每天结果一致
-          DAY_SEED=$(date +%Y%V%u)
+          DAY_SEED=$(date +%Y%V%u%S)
           RANDOM_NUM=$((0x$(echo -n $DAY_SEED | md5sum | cut -c1-8) % 7))
           # 如果随机数等于今天星期数则运行（每周1-7次随机）
           CURRENT_DAY=$(date +%u)  # 1-7, 1=周一, 7=周日
